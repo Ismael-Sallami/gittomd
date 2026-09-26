@@ -15,7 +15,7 @@ import path from "node:path";
 // Client ID of the "gittomd" OAuth App (device flow enabled). It is public by
 // design: the device flow does not use a client secret.
 // GITTOMD_CLIENT_ID overrides it, which is handy for forks.
-export const BUILTIN_CLIENT_ID = "";
+export const BUILTIN_CLIENT_ID = "Ov23li5t3FL8XBfw8Ptp";
 
 export function clientId() {
   return process.env.GITTOMD_CLIENT_ID || BUILTIN_CLIENT_ID;
