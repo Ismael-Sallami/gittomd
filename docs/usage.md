@@ -92,6 +92,7 @@ fixtures/**/*.json
 
 ```
 # owner/repo
+Generated with gittomd, made by Ismael Sallami.
 ## Summary                      source, description, ref, commit, date, counts, tokens
 ## Structure                    ASCII tree, skipped files marked
 ## Files                        root README first, then the tree order

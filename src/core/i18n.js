@@ -3,6 +3,7 @@
 
 export const MESSAGES = {
   es: {
+    generatedBy: "Generado con [gittomd](https://github.com/Ismael-Sallami/gittomd), creado por Ismael Sallami.",
     summary: "Resumen",
     date: "Fecha",
     source: "Origen",
@@ -44,6 +45,7 @@ export const MESSAGES = {
     },
   },
   en: {
+    generatedBy: "Generated with [gittomd](https://github.com/Ismael-Sallami/gittomd), made by Ismael Sallami.",
     summary: "Summary",
     date: "Date",
     source: "Source",

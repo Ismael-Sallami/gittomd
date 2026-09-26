@@ -130,7 +130,7 @@ export function buildMarkdown(opts, files, skipped) {
   const total = chunks.length;
 
   function header(tokens) {
-    let out = "# " + title + "\n\n## " + t(lang, "summary") + "\n\n| | |\n|---|---|\n";
+    let out = "# " + title + "\n\n" + t(lang, "generatedBy") + "\n\n## " + t(lang, "summary") + "\n\n| | |\n|---|---|\n";
     const row = (k, v) => { if (v !== undefined && v !== null && v !== "") out += "| " + t(lang, k) + " | " + cell(v) + " |\n"; };
     row("source", meta.source);
     row("description", meta.description);

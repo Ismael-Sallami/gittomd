@@ -43,11 +43,11 @@ test("split produces several parts and every file appears once", () => {
   for (const f of files) assert.equal(all.split("### `" + f.path + "`").length, 2);
 });
 
-test("the document holds only the repository: summary first, no instructions", () => {
+test("the document holds the repository, with the credit line and no instructions", () => {
   const md = buildMarkdown({ title: "o/r", meta: { date: "2026-09-26" } }, [{ path: "a.txt", content: "a", size: 1 }], []).parts[0];
-  assert.ok(md.startsWith("# o/r\n\n## Resumen\n"));
+  assert.ok(md.startsWith("# o/r\n\nGenerado con [gittomd](https://github.com/Ismael-Sallami/gittomd), creado por Ismael Sallami.\n\n## Resumen\n"));
   assert.ok(md.includes("| Fecha | 2026-09-26 |"));
-  assert.ok(!/instruc|gittomd/i.test(md));
+  assert.ok(!/instruc|explica/i.test(md));
 });
 
 test("output has no long dashes or middle dots", () => {
