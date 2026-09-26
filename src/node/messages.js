@@ -24,8 +24,6 @@ Salida:
   -c, --copy               copiar el resultado al portapapeles
       --split <tokens>     partir en varios ficheros, por ejemplo --split 100k
       --lang <es|en>       idioma del documento (por defecto, el del sistema)
-      --prompt <texto>     instrucción para la IA al principio del documento
-      --no-prompt          no añadir ninguna instrucción
       --no-tree            no incluir el árbol de carpetas
       --no-contents        solo la estructura, sin el contenido de los ficheros
 
@@ -50,7 +48,7 @@ Acceso:
 Variables de entorno: GITHUB_TOKEN, GH_TOKEN o GITTOMD_TOKEN.
 
 Ejemplos:
-  gittomd facebook/react -i "packages/react/**" --no-prompt
+  gittomd facebook/react -i "packages/react/**"
   gittomd https://github.com/owner/repo/tree/main/docs -o docs.md
   gittomd . --exclude "*.test.js" --copy
 `,
@@ -120,8 +118,6 @@ Output:
   -c, --copy               copy the result to the clipboard
       --split <tokens>     split into several files, for example --split 100k
       --lang <es|en>       language of the document (default: the system one)
-      --prompt <text>      instruction for the AI at the top of the document
-      --no-prompt          do not add any instruction
       --no-tree            leave out the folder tree
       --no-contents        structure only, without file contents
 
@@ -146,7 +142,7 @@ Access:
 Environment variables: GITHUB_TOKEN, GH_TOKEN or GITTOMD_TOKEN.
 
 Examples:
-  gittomd facebook/react -i "packages/react/**" --no-prompt
+  gittomd facebook/react -i "packages/react/**"
   gittomd https://github.com/owner/repo/tree/main/docs -o docs.md
   gittomd . --exclude "*.test.js" --copy
 `,

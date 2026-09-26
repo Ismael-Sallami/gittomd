@@ -89,7 +89,6 @@ function treeSection(opts, files, skipped, lang) {
  *   rootName     name of the root folder in the tree
  *   meta         { source, description, ref, commit, date }
  *   lang         "es" or "en"
- *   prompt       true for the default text, a string for a custom one, false for none
  *   tree         include the tree (default true)
  *   split        max tokens per part, 0 for a single document
  * files: [{ path, content, size }]
@@ -106,12 +105,6 @@ export function buildMarkdown(opts, files, skipped) {
 
   const treeText = opts.tree === false ? "" : treeSection(opts, files, skipped, lang);
   const skippedText = skippedSection(skipped, lang);
-  const promptText =
-    opts.prompt === false || opts.prompt === undefined
-      ? ""
-      : typeof opts.prompt === "string" && opts.prompt.trim()
-        ? opts.prompt.trim()
-        : t(lang, "defaultPrompt", { repo: title });
 
   const bodyTokens = estimateTokens(treeText + skippedText + blocks.join("\n"));
 
@@ -137,14 +130,13 @@ export function buildMarkdown(opts, files, skipped) {
   const total = chunks.length;
 
   function header(tokens) {
-    let out = "# " + title + "\n\n" + t(lang, "generatedBy", { date: meta.date || new Date().toISOString().slice(0, 10) }) + "\n\n";
-    if (promptText) out += "## " + t(lang, "promptTitle") + "\n\n" + promptText + "\n\n";
-    out += "## " + t(lang, "summary") + "\n\n| | |\n|---|---|\n";
+    let out = "# " + title + "\n\n## " + t(lang, "summary") + "\n\n| | |\n|---|---|\n";
     const row = (k, v) => { if (v !== undefined && v !== null && v !== "") out += "| " + t(lang, k) + " | " + cell(v) + " |\n"; };
     row("source", meta.source);
     row("description", meta.description);
     row("ref", meta.ref);
     row("commit", meta.commit);
+    row("date", meta.date || new Date().toISOString().slice(0, 10));
     row("included", files.length);
     row("skipped", skipped.length);
     row("size", formatBytes(bytes));

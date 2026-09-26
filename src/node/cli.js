@@ -23,7 +23,6 @@ const OPTIONS = {
   copy: ["c", "boolean", false],
   split: [null, "string"],
   lang: [null, "string"],
-  prompt: [null, "string"],
   tree: [null, "boolean", true],
   contents: [null, "boolean", true],
   ref: ["r", "string"],
@@ -66,7 +65,6 @@ export function parseArgs(argv) {
       inline = eq === -1 ? undefined : arg.slice(eq + 1);
       if (!OPTIONS[name] && name.startsWith("no-")) {
         const base = name.slice(3);
-        if (base === "prompt") { values.prompt = false; continue; }
         if (OPTIONS[base] && OPTIONS[base][1] === "boolean") { values[base] = false; continue; }
       }
     } else {
@@ -131,7 +129,6 @@ export async function main(argv) {
   // Options that need parsing.
   const options = {
     lang,
-    prompt: values.prompt === undefined ? true : values.prompt,
     tree: values.tree,
     contents: values.contents,
     include: values.include,

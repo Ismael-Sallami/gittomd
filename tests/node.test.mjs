@@ -62,11 +62,10 @@ test("tar reader handles ustar, pax paths and the global comment", () => {
 });
 
 test("argument parsing", () => {
-  const { values, positionals } = parseArgs(["o/r", "-o", "x.md", "-i", "*.js,*.ts", "--include=*.md", "--no-prompt", "--no-tree", "-q"]);
+  const { values, positionals } = parseArgs(["o/r", "-o", "x.md", "-i", "*.js,*.ts", "--include=*.md", "--no-tree", "-q"]);
   assert.deepEqual(positionals, ["o/r"]);
   assert.equal(values.output, "x.md");
   assert.deepEqual(values.include, ["*.js", "*.ts", "*.md"]);
-  assert.equal(values.prompt, false);
   assert.equal(values.tree, false);
   assert.equal(values.quiet, true);
   assert.throws(() => parseArgs(["--nope"]));
@@ -105,7 +104,7 @@ test("the CLI converts a local folder end to end", () => {
   fs.writeFileSync(path.join(dir, "data.xyz"), Buffer.from([1, 0, 2]));
   fs.writeFileSync(path.join(dir, "node_modules/pkg/index.js"), "x");
 
-  const res = spawnSync(process.execPath, [bin, dir, "--stdout", "--lang", "en", "--no-prompt"], { encoding: "utf8" });
+  const res = spawnSync(process.execPath, [bin, dir, "--stdout", "--lang", "en"], { encoding: "utf8" });
   assert.equal(res.status, 0, res.stderr);
   const md = res.stdout;
   assert.ok(md.includes("### `README.md`"));

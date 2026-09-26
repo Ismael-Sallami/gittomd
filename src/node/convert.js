@@ -42,7 +42,6 @@ export function convertEntries(entries, meta, options) {
       rootName: meta.rootName,
       meta,
       lang: options.lang,
-      prompt: options.prompt,
       tree: options.tree,
       split: options.split,
     },

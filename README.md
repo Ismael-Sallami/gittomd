@@ -91,15 +91,14 @@ gittomd owner/repo                             # writes repo.md
 gittomd https://github.com/owner/repo/tree/dev/docs
 gittomd owner/repo@v2.0 -o context.md
 gittomd . --exclude "tests/,*.snap" --copy     # a local folder, to the clipboard
-gittomd owner/repo --include "src/**,*.md" --no-prompt
+gittomd owner/repo --include "src/**,*.md"
 gittomd owner/repo --split 100k                # repo-1.md, repo-2.md...
 gittomd owner/repo --stdout | wc -c
 gittomd login                                  # save a token for private repos
 ```
 
-By default the document starts with a short instruction asking the AI to
-explain the project. Change it with `--prompt "..."` or drop it with
-`--no-prompt`. The document language follows the system (`--lang es` or
+The document holds only the repository: a summary, the tree, the files and
+the list of what was left out. Its headings follow the system language (`--lang es` or
 `--lang en` to choose). Every option is described in
 [`docs/usage.md`](docs/usage.md) and in `gittomd --help`.
 

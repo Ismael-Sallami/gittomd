@@ -24,9 +24,7 @@ the shortest ref first and moves folder parts into it until one exists.
 | `--stdout` | off | write to standard output instead of a file |
 | `-c, --copy` | off | also copy the result to the clipboard (pbcopy, clip, wl-copy, xclip or xsel) |
 | `--split <tokens>` | off | split into several files of about that many tokens: `--split 100k` |
-| `--lang <es\|en>` | system | language of the headings and the default instruction |
-| `--prompt <text>` | a default text | instruction for the AI at the top |
-| `--no-prompt` | | no instruction at all |
+| `--lang <es\|en>` | system | language of the headings |
 | `--no-tree` | | leave out the folder tree |
 | `--no-contents` | | only the summary and the tree |
 
@@ -94,9 +92,7 @@ fixtures/**/*.json
 
 ```
 # owner/repo
-Generated with gittomd on 2026-09-26.
-## Instructions for the AI      the prompt, unless --no-prompt
-## Summary                      source, description, ref, commit, counts, tokens
+## Summary                      source, description, ref, commit, date, counts, tokens
 ## Structure                    ASCII tree, skipped files marked
 ## Files                        root README first, then the tree order
 ### `path/to/file`              one code block per file

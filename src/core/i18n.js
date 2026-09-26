@@ -3,13 +3,8 @@
 
 export const MESSAGES = {
   es: {
-    generatedBy: "Generado con gittomd el {date}.",
-    promptTitle: "Instrucciones para la IA",
-    defaultPrompt:
-      "Abajo tienes el contenido completo del repositorio {repo}: primero un resumen, luego la estructura de carpetas y después cada fichero. " +
-      "Explícame qué hace el proyecto, cómo está organizado, cómo se instala y se ejecuta, y cuáles son sus partes principales. " +
-      "Cuando hables de un fichero, cita su ruta.",
     summary: "Resumen",
+    date: "Fecha",
     source: "Origen",
     description: "Descripción",
     ref: "Rama o ref",
@@ -49,13 +44,8 @@ export const MESSAGES = {
     },
   },
   en: {
-    generatedBy: "Generated with gittomd on {date}.",
-    promptTitle: "Instructions for the AI",
-    defaultPrompt:
-      "Below is the full content of the repository {repo}: first a summary, then the folder structure and then every file. " +
-      "Explain what the project does, how it is organised, how to install and run it, and what its main parts are. " +
-      "When you talk about a file, quote its path.",
     summary: "Summary",
+    date: "Date",
     source: "Source",
     description: "Description",
     ref: "Branch or ref",

@@ -43,17 +43,15 @@ test("split produces several parts and every file appears once", () => {
   for (const f of files) assert.equal(all.split("### `" + f.path + "`").length, 2);
 });
 
-test("no prompt, custom prompt and default prompt", () => {
-  const none = buildMarkdown({ title: "o/r", prompt: false }, [], []).parts[0];
-  assert.ok(!none.includes("## Instrucciones"));
-  const custom = buildMarkdown({ title: "o/r", prompt: "Hazme un resumen" }, [], []).parts[0];
-  assert.ok(custom.includes("Hazme un resumen"));
-  const def = buildMarkdown({ title: "o/r", prompt: true, lang: "en" }, [], []).parts[0];
-  assert.ok(def.includes("## Instructions for the AI"));
+test("the document holds only the repository: summary first, no instructions", () => {
+  const md = buildMarkdown({ title: "o/r", meta: { date: "2026-09-26" } }, [{ path: "a.txt", content: "a", size: 1 }], []).parts[0];
+  assert.ok(md.startsWith("# o/r\n\n## Resumen\n"));
+  assert.ok(md.includes("| Fecha | 2026-09-26 |"));
+  assert.ok(!/instruc|gittomd/i.test(md));
 });
 
 test("output has no long dashes or middle dots", () => {
-  const md = buildMarkdown({ title: "o/r", prompt: true, meta: { source: "x", ref: "main" } },
+  const md = buildMarkdown({ title: "o/r", meta: { source: "x", ref: "main" } },
     [{ path: "a.txt", content: "a", size: 1 }], [{ path: "b.png", size: 1, reason: "binary" }]).parts[0];
   assert.ok(!/[\u2014\u2013\u00b7]/.test(md));
 });
