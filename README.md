@@ -143,7 +143,7 @@ python3 -m http.server -d web 8000   # the web page at http://localhost:8000
 ## Results
 
 ```
-node --test: 22 tests, 0 failures (Node 18, 20 and 22 in CI)
+node --test: 23 tests, 0 failures (Node 18, 20 and 22 in CI)
 ```
 
 The tests cover the fences with backticks inside files, blank lines kept as

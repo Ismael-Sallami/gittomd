@@ -70,7 +70,7 @@ ln -sf "$APP_DIR/bin/gittomd.js" "$BIN_DIR/gittomd"
 
 say "Installed: $BIN_DIR/gittomd ($("$BIN_DIR/gittomd" --version))"
 case ":$PATH:" in
-  *":$BIN_DIR:"*) say "Try it: gittomd owner/repo" ;;
+  *":$BIN_DIR:"*) say "Try it: gittomd Ismael-Sallami/gittomd   (or any owner/repo, a GitHub URL or a folder)" ;;
   *)
     say ""
     say "$BIN_DIR is not in your PATH. Add this line to ~/.bashrc or ~/.zshrc:"

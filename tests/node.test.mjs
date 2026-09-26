@@ -123,6 +123,12 @@ test("the CLI explains a bad input and exits with 2", () => {
   assert.match(res.stderr, /neither a GitHub repository nor a local folder/);
 });
 
+test("the CLI does not try the owner/repo example", () => {
+  const res = spawnSync(process.execPath, [bin, "owner/repo", "--lang", "en"], { encoding: "utf8" });
+  assert.equal(res.status, 2);
+  assert.match(res.stderr, /just the example/);
+});
+
 test("--version matches package.json", () => {
   const out = execFileSync(process.execPath, [bin, "--version"]).toString().trim();
   assert.equal(out, JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8")).version);

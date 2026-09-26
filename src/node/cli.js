@@ -166,6 +166,9 @@ export async function main(argv) {
     say.progress("reading", { dir: localPath });
     source = readLocal(localPath);
     options.subdir = values.subdir || "";
+  } else if (target && isPlaceholder(target)) {
+    say.error("placeholder", { input: command });
+    return 2;
   } else if (target) {
     if (values.ref) target.ref = values.ref;
     if (values.subdir) target.subdir = values.subdir;
@@ -197,6 +200,11 @@ export async function main(argv) {
   if (result.tokens > 200000 && !options.split) say.info("bigWarning");
   if (values.copy) say.info(copyToClipboard(result.parts.join("\n")) ? "copied" : "copyFailed");
   return 0;
+}
+
+// "owner/repo" copied straight from the help text.
+function isPlaceholder(target) {
+  return /^(owner|user|usuario)$/i.test(target.owner) && /^(repo|repository|repositorio)$/i.test(target.repo);
 }
 
 function defaultName(meta) {

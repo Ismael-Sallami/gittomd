@@ -6,7 +6,7 @@ type: software
 authors:
   - family-names: "Sallami Moreno"
     given-names: "Ismael"
-version: 1.0.0
+version: 1.0.1
 date-released: 2026-09-26
 license: MIT
 repository-code: "https://github.com/Ismael-Sallami/gittomd"
