@@ -1,0 +1,51 @@
+name: tests
+
+# The core decides what goes into the Markdown and how it is fenced, and the
+# web page runs a bundled copy of it. Every push checks both. There is nothing
+# to install: the project has no dependencies.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Unit and end to end tests
+        run: node --test tests/core.test.mjs tests/node.test.mjs
+
+      - name: The web bundle must match the core
+        run: node scripts/build-web.mjs --check
+
+      - name: Convert this repository with the CLI
+        run: |
+          node bin/gittomd.js . -o self.md --lang en
+          grep -q '### `src/core/markdown.js`' self.md
+
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint the installer
+        run: shellcheck install.sh
+
+      - name: Install this commit into a clean home
+        run: |
+          export HOME="$(mktemp -d)"
+          GITTOMD_SOURCE="$PWD" bash install.sh
+          "$HOME/.local/bin/gittomd" --version
+          bash install.sh --uninstall
+          test ! -e "$HOME/.local/bin/gittomd"

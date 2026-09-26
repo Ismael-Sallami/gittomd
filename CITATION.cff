@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "gittomd"
+abstract: "Turn a GitHub repository or a local folder into a single Markdown file with a summary, the folder tree and every file, to give to an AI as context."
+type: software
+authors:
+  - family-names: "Sallami Moreno"
+    given-names: "Ismael"
+version: 1.0.0
+date-released: 2026-09-26
+license: MIT
+repository-code: "https://github.com/Ismael-Sallami/gittomd"
+url: "https://elblogdeismael.github.io/gittomd/"
+keywords:
+  - github
+  - markdown
+  - llm
+  - context
+  - cli

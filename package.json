@@ -1,0 +1,41 @@
+{
+  "name": "gittomd",
+  "version": "1.0.0",
+  "description": "Turn a GitHub repository or a local folder into a single Markdown file (summary, tree and every file) to give to an AI.",
+  "type": "module",
+  "bin": {
+    "gittomd": "bin/gittomd.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test tests/core.test.mjs tests/node.test.mjs",
+    "build:web": "node scripts/build-web.mjs",
+    "check": "node --test tests/core.test.mjs tests/node.test.mjs && node scripts/build-web.mjs --check"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "github",
+    "markdown",
+    "llm",
+    "ai",
+    "context",
+    "cli",
+    "repository",
+    "prompt"
+  ],
+  "author": "Ismael Sallami",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ismael-Sallami/gittomd.git"
+  },
+  "homepage": "https://elblogdeismael.github.io/gittomd/",
+  "bugs": "https://github.com/Ismael-Sallami/gittomd/issues"
+}

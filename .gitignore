@@ -1,0 +1,6 @@
+node_modules/
+*.log
+.DS_Store
+# output of trying the tool on itself
+/*.md
+!/README.md
